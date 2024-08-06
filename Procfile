@@ -1,1 +1,2 @@
-web: gunicorn Django_Demo_WebScrapping.Django_Demo_WebScrapping.wsgi
+web: gunicorn Django_Demo_WebScrapping.Django_Demo_WebScrapping.wsgi:application
+
