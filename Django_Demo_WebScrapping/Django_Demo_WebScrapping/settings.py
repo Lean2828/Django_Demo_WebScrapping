@@ -57,6 +57,25 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Django_Demo_WebScrapping.urls'
 
+# Logging configuration
+LOGGING_CONFIG = 'django.utils.log.dictConfig'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
