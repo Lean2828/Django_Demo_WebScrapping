@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.conf import settings
 import os
 import sys
+import platform
 
 def index(request):
     return render(request, 'index.html')
@@ -12,8 +13,13 @@ def run_fill_form(request):
     # Path to your main.py script
     script_path = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'Demo_WebScrapping', 'main.py'))
 
-    # Path to the Python executable in the virtual environment
-    python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'Scripts', 'python.exe'))
+  # Detect the operating system
+    if platform.system() == 'Windows':
+        # Path to the Python executable in the virtual environment (Windows)
+        python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'Scripts', 'python.exe'))
+    else:
+        # Path to the Python executable in the virtual environment (Unix/Linux)
+        python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'bin', 'python'))
 
     # Set the execution variable for FillForm
     env = os.environ.copy()
@@ -33,8 +39,13 @@ def run_table_scraper(request):
     # Path to your main.py script
     script_path = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'Demo_WebScrapping', 'main.py'))
 
-    # Path to the Python executable in the virtual environment
-    python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'Scripts', 'python.exe'))
+  # Detect the operating system
+    if platform.system() == 'Windows':
+        # Path to the Python executable in the virtual environment (Windows)
+        python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'Scripts', 'python.exe'))
+    else:
+        # Path to the Python executable in the virtual environment (Unix/Linux)
+        python_executable = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'VENV_Django_WebScrapping', 'bin', 'python'))
 
     # Set the execution variable for TableScrapper
     env = os.environ.copy()
