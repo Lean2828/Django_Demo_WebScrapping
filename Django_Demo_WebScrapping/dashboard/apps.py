@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class DashboardConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Django_Demo_WebScrapping.dashboard'
+    name = 'dashboard'

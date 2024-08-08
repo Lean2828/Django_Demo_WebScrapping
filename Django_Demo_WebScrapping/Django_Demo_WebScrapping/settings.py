@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-2uq@4-h0hmu2$9d411$qs9%+(qj+0=%g+x!0yfe@+ciuatk9ue
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
+# ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Django_Demo_WebScrapping.dashboard',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
