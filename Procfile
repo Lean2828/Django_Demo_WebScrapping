@@ -1,3 +1,2 @@
-web: waitress-serve --port=$PORT Django_Demo_WebScrapping.wsgi:application
-
+web: gunicorn Django_Demo_WebScrapping.wsgi:application
 
