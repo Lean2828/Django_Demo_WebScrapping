@@ -3,5 +3,11 @@ services:
     name: django-demo-webscrapping
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      python -m venv venv
+      source venv/bin/activate
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      # Verificar la activación del entorno virtual y la instalación de dependencias
+      pip list  # Lista las dependencias instaladas para verificar
     startCommand: gunicorn Django_Demo_WebScrapping.wsgi:application
