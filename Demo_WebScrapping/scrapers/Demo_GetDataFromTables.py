@@ -4,7 +4,7 @@ from Demo_WebScrapping.scrapers.Base_scraper import BaseScraper
 
 class DemoFillFormScrapper(BaseScraper):
     def __init__(self):
-        self.driver = DriverSeleniumChrome(GetDataFromTable_CONFIG['TARGET_URL'])        
+        # self.driver = DriverSeleniumChrome(GetDataFromTable_CONFIG['TARGET_URL'])        
         super().__init__(GetDataFromTable_CONFIG)
 
     def scrape(self):

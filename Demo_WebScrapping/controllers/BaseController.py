@@ -3,5 +3,6 @@ class BaseController:
         self.scraper = scraper
 
     def run(self):
-        self.scraper.scrape()
+        with self.scraper as scraper:
+            scraper.scrape()
         

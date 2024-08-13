@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from Demo_WebScrapping.config.settings import Common_CONFIG
+import os
 
 
 class DriverSeleniumChrome:
@@ -19,8 +20,21 @@ class DriverSeleniumChrome:
         
         if Common_CONFIG['HEADLESS']:
             options.add_argument('--headless')
+            
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--no-sandbox')        
         
-        self.service = service or Service(ChromeDriverManager().install())
+        self.service = service
+        
+        # self.service = service or Service(ChromeDriverManager().install())
+        if not self.service:
+            # Determinar el executable_path basado en la variable de entorno CHROMEDRIVER_PATH o usar ChromeDriverManager
+            executable_path = os.getenv('CHROMEDRIVER_PATH', None)
+            if executable_path:
+                self.service = Service(executable_path=executable_path)
+            else:
+                self.service = Service(ChromeDriverManager().install())        
+        
         self.driver = webdriver.Chrome(service=self.service, options=options, keep_alive=keep_alive)
         self.teardown = teardown
 
