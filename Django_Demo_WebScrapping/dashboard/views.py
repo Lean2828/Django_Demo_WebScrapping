@@ -1,5 +1,5 @@
 import subprocess
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.conf import settings
 import os
@@ -10,6 +10,12 @@ def index(request):
     return render(request, 'index.html')
 
 def run_fill_form(request):
+    
+    is_local = os.getenv('IS_LOCAL', 'False') == 'False'
+    if not is_local:
+         return HttpResponse('This feature is available only for local executions or with a subscription.', status=403)
+
+    # Aquí va la lógica del scraper si está en un entorno local
     # Path to your main.py script
     script_path = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'Demo_WebScrapping', 'main.py'))
 
@@ -36,6 +42,11 @@ def run_fill_form(request):
         return HttpResponse(f"Error: {result.stderr}")
 
 def run_table_scraper(request):
+    
+    is_local = os.getenv('IS_LOCAL', 'False') == 'False'
+    if not is_local:
+        return JsonResponse({'status': 'error', 'message': 'This feature is available only for local executions or with a subscription.'}, status=403)
+        
     # Path to your main.py script
     script_path = os.path.abspath(os.path.join(settings.BASE_DIR, '..', 'Demo_WebScrapping', 'main.py'))
 

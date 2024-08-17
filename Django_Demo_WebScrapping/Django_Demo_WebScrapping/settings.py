@@ -35,10 +35,11 @@ SECRET_KEY = 'django-insecure-2uq@4-h0hmu2$9d411$qs9%+(qj+0=%g+x!0yfe@+ciuatk9ue
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
+#ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
+IS_LOCAL = os.getenv('IS_LOCAL', 'False') == 'True'
 
 # Application definition
 
