@@ -35,8 +35,8 @@ SECRET_KEY = 'django-insecure-2uq@4-h0hmu2$9d411$qs9%+(qj+0=%g+x!0yfe@+ciuatk9ue
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
-# ALLOWED_HOSTS = ['127.0.0.1','localhost']
+# ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 
@@ -155,7 +155,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',  # Puedes cambiar esto a INFO o WARNING en producción
+            'level': 'ERROR',  # Puedes cambiar esto a INFO o WARNING en producción
             'class': 'logging.FileHandler',
             'filename': os.path.join(LOG_DIR, 'django_debug.log'),
             'formatter': 'verbose',
@@ -176,12 +176,12 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
-            'level': 'DEBUG',  
+            'level': 'ERROR',  
             'propagate': True,
         },
         'Django_Demo_WebScrapping': { 
             'handlers': ['file', 'console'],
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'propagate': True,
         },
     },

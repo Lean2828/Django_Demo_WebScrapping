@@ -4,44 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scraping Dashboard</title>
+    <title>Leandro Javier Russo - Web Scraping Demos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: url("{% static 'img/background-1.jpg' %}") no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .navbar {
+            border-bottom: 2px solid #e9ecef;
         }
         .container {
-            margin-top: 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
+            margin-top: 60px;
         }
-        .menu-item {
-            margin-bottom: 20px;
+        .scraper-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .scraper-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .scraper-card img {
+            width: auto; 
+            height: auto; 
+            max-width: 100%;
+            max-height: 200px; 
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .card-body {
+            padding: 20px;
         }
         .presentation {
-            margin-bottom: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+        }
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 2000;
+            display: none; /* Oculto por defecto */
+            justify-content: center;
+            align-items: center;
+        }
+        .toast-success {
+            background-color: #28a745;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Leandro Javier Russo - Demos Web Scraping</h1>
-        <div class="presentation text-center">
-            <p>Welcome to the Web Scraping Dashboard. This platform allows you to execute various Demos web scraping tasks with ease. Choose a scraper from the menu below to get started.</p>
-        </div>
-        <div class="menu-item">
-            <h3>Scrapers</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="{% url 'run_table_scraper' %}">Scraper 1: Data from Table</a></li>
-                <li class="list-group-item"><a href="{% url 'run_fill_form' %}">Scraper 2: Fill Form</a></li>
-                <!-- Add more scrapers as needed -->
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Web Scraping Demos</a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrapers">Scrapers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
             </ul>
         </div>
+    </nav>
+
+    <div class="container">
+        <div class="presentation">
+            <h1>Leandro Javier Russo - Web Scraping Demos</h1>
+            <p>Discover efficient and robust web scraping solutions. Explore the demos below to see them in action.</p>
+        </div>
+
+        <div id="scrapers" class="row">
+            <div class="col-md-6 mb-4">
+                <div class="scraper-card">
+                    <img src="{% static 'img/background_DataFromTable.png' %}" class="img-fluid" alt="Data from Table">
+                    <div class="card-body">
+                        <h5 class="card-title">Scraper 1: Data from Table</h5>
+                        <p class="card-text">Extract data from web tables and export it to Excel or a database.</p>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="runScraper('{% url 'run_table_scraper' %}')" class="btn btn-outline-primary">Run Scraper</button>
+                            <button onclick="showDetails('Data from Table')" class="btn btn-outline-secondary">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="scraper-card">
+                    <img src="{% static 'img/background_FillForm.png' %}" class="img-fluid" alt="Fill Form">
+                    <div class="card-body">
+                        <h5 class="card-title">Scraper 2: Fill Form</h5>
+                        <p class="card-text">Automate form filling and submission on websites.</p>
+                        <div class="d-flex justify-content-between">
+                            <button onclick="runScraper('{% url 'run_fill_form' %}')" class="btn btn-outline-primary">Run Scraper</button>
+                            <button onclick="showDetails('Fill Form')" class="btn btn-outline-secondary">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div id="contact" class="footer">
+        <p>© 2024 Leandro Javier Russo. For inquiries, please <a href="mailto:email@example.com" style="color: #ffc107;">contact me</a>.</p>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function runScraper(scraperUrl) {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            // Mostrar la capa de carga
+            loadingOverlay.style.display = 'flex';
+
+            fetch(scraperUrl, {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(result => {
+                // Ocultar la capa de carga
+                loadingOverlay.style.display = 'none';
+                showToast(result, 'success');
+            })
+            .catch(error => {
+                // Ocultar la capa de carga
+                loadingOverlay.style.display = 'none';
+                showToast('Error running scraper: ' + error, 'error');
+            });
+        }
+
+        function showToast(message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center ${type === 'success' ? 'toast-success' : 'text-bg-danger'} border-0`;
+            toast.role = 'alert';
+            toast.ariaLive = 'assertive';
+            toast.ariaAtomic = 'true';
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${type === 'success' ? '✔ ' : ''}${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            toastContainer.appendChild(toast);
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+        }
+
+        function showDetails(scraperName) {
+            alert(`Details about the ${scraperName} scraper will be displayed here.`);
+        }
+    </script>
 </body>
 </html>

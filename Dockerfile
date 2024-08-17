@@ -8,9 +8,7 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     libxi6 \
     libgconf-2-4 \
-    gnupg \
-    curl \
-    telnet    
+    gnupg
 
 # Añadir el repositorio de Google Chrome y la llave de firma
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -27,7 +25,7 @@ RUN wget -N https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriv
 # Configurar el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos del proyecto desde el directorio Python
+# Copiar los archivos del proyecto
 COPY . /app
 
 # Crear y activar el entorno virtual con el nombre VENV_Django_WebScrapping
@@ -40,9 +38,8 @@ RUN /app/VENV_Django_WebScrapping/bin/pip install --upgrade pip
 # Instalar dependencias de Python desde el archivo requirements.txt en la raíz
 RUN /app/VENV_Django_WebScrapping/bin/pip install -r /app/requirements.txt
 
-# Establecer la variable de entorno DATABASE_URL
-# ENV DATABASE_URL=postgres://user:password@hostname:port/dbname
+# Exponer el puerto 8000
+EXPOSE 8000
 
-# Establecer el comando de inicio ejecutando gunicorn desde el entorno virtual y cambiando al directorio correcto
+# Establecer el comando de inicio ejecutando gunicorn desde el entorno virtual
 CMD ["/bin/bash", "-c", ". /app/VENV_Django_WebScrapping/bin/activate && cd Django_Demo_WebScrapping && /app/VENV_Django_WebScrapping/bin/gunicorn Django_Demo_WebScrapping.wsgi:application --bind 0.0.0.0:8000"]
-
