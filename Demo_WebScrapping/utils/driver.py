@@ -21,8 +21,16 @@ class DriverSeleniumChrome:
         if Common_CONFIG['HEADLESS']:
             options.add_argument('--headless')
             
+        if Common_CONFIG['DISABLE_GPU']:
+            options.add_argument('--disable-gpu')            
+            
+        if Common_CONFIG['NO_SANDBOX']:
+            options.add_argument('--no-sandbox')                        
+            
+        if Common_CONFIG['DISABLE_EXTENSIONS']:
+            options.add_argument('--disable-extensions') 
+            
         options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--no-sandbox')        
         
         self.service = service
         

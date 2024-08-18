@@ -2,9 +2,11 @@
 /Django
 /Python-react-CRUD
 /VENV_Django_WebScrapping
+/Django_Demo_WebScrapping/settings/local_settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+**/__pycache__/
 settings.cpython-312.pyc
 *.py[cod]
 *$py.class

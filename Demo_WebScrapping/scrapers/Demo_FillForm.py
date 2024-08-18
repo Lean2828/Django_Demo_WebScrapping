@@ -1,6 +1,10 @@
 from Demo_WebScrapping.utils.driver import DriverSeleniumChrome
 from Demo_WebScrapping.config.settings import FillForm_CONFIG
 from Demo_WebScrapping.scrapers.Base_scraper import BaseScraper
+import logging
+import datetime
+
+logger = logging.getLogger('dashboard')
 
 class DemoFillFormScrapper(BaseScraper):
     def __init__(self):
@@ -8,6 +12,7 @@ class DemoFillFormScrapper(BaseScraper):
         super().__init__(FillForm_CONFIG)
 
     def scrape(self):
+        logger.info(f"entra scrape { datetime.datetime.now()}")        
         self.driver.get(FillForm_CONFIG['TARGET_URL'])
         
         obj = self.driver.find_element_by_text_xpath('span','Account')
@@ -40,5 +45,7 @@ class DemoFillFormScrapper(BaseScraper):
         obj = self.driver.find_element_by_text_xpath('span','Register')
         obj.click()
 
-        self.close()
+        logger.info(f"sale scrape { datetime.datetime.now()}")                
+        
+        
         

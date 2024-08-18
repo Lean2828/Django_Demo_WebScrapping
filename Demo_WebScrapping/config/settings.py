@@ -1,7 +1,11 @@
 Common_CONFIG = {
     'START_MAXIMIZED':True,
     'DISABLE_EXTENSIONS':True,
-    'HEADLESS':False
+    'HEADLESS':False,
+    'DISABLE_GPU': True,
+    'NO_SANDBOX': True,
+    'DISABLE_EXTENSIONS': True
+    
 }
 
 FillForm_CONFIG = {
