@@ -3,6 +3,7 @@
 /Python-react-CRUD
 /VENV_Django_WebScrapping
 Django_Demo_WebScrapping/Django_Demo_WebScrapping/settings_local.py
+Django_Demo_WebScrapping/Django_Demo_WebScrapping/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
