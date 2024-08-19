@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import logging.config
 import sys
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, os.path.abspath(os.path.join(BASE_DIR, '..')))
