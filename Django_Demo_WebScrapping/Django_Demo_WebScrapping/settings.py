@@ -4,11 +4,12 @@ import logging.config
 import sys
 import dj_database_url
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, os.path.abspath(os.path.join(BASE_DIR, '..')))
 
-DEBUG = False
 ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
+# ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)

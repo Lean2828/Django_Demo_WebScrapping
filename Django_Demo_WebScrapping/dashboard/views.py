@@ -10,14 +10,15 @@ import datetime
 from Demo_WebScrapping import main as scraper_main
 
 
+
 logger = logging.getLogger('django')
 
 def index(request):
     return render(request, 'index.html')
 
 def run_fill_form(request):
-    is_local = os.getenv('IS_LOCAL', 'False') == 'False'
-    if not is_local:
+    logger.info (f'IS_LOCAL:  {settings.IS_LOCAL}')
+    if not settings.IS_LOCAL:
         return HttpResponse('This feature is available only for local executions or with a subscription.', status=403)
 
     try:
