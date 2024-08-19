@@ -9,7 +9,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(BASE_DIR, '..')))
 # Configuración común
 SECRET_KEY = 'django-insecure-2uq@4-h0hmu2$9d411$qs9%+(qj+0=%g+x!0yfe@+ciuatk9ue'
 DEBUG = False
-ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
