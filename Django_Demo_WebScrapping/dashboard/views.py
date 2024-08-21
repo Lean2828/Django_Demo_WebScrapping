@@ -17,7 +17,6 @@ def index(request):
     return render(request, 'index.html')
 
 def run_fill_form(request):
-    logger.info (f'IS_LOCAL:  {settings.IS_LOCAL}')
     if not settings.IS_LOCAL:
         return HttpResponse('This feature is available only for local executions or with a subscription.', status=403)
 
@@ -33,8 +32,7 @@ def run_fill_form(request):
         return HttpResponse(f"Error: {str(e)}", status=500)
 
 def run_table_scraper(request):
-    is_local = os.getenv('IS_LOCAL', 'False') == 'False'
-    if not is_local:
+    if not settings.IS_LOCAL:
         return HttpResponse('This feature is available only for local executions or with a subscription.', status=403)
 
     try:
