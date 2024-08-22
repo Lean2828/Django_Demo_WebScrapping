@@ -7,7 +7,7 @@ logger = logging.getLogger('django')
 
 def run_scraper(request, scraper_name):
     if not settings.IS_LOCAL:
-        return HttpResponse('This feature is available only for local executions or with a subscription.', status=403)
+        return HttpResponse('This feature is available only for local environments. Contact me to request a live demo.', status=403)
 
     try:
         # Llamada directa al main.py con el parámetro correspondiente

@@ -75,16 +75,23 @@
                     </ul>
                     <div class="tab-content" id="myTabContent{{ scraper.id }}">
                         <div class="tab-pane fade show active" id="type{{ scraper.id }}" role="tabpanel" aria-labelledby="type-tab{{ scraper.id }}">
+                            <p style="text-align: center; font-size: 1.5em;"><strong>{{ scraper.type_title }}</strong></p>
                             <p>{{ scraper.type }}</p>
                         </div>
                         <div class="tab-pane fade" id="technology{{ scraper.id }}" role="tabpanel" aria-labelledby="technology-tab{{ scraper.id }}">
-                            <p>{{ scraper.technology }}</p>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                {% for tech in scraper.technology %}
+                                <li>{{ tech }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                         <div class="tab-pane fade" id="output{{ scraper.id }}" role="tabpanel" aria-labelledby="output-tab{{ scraper.id }}">
-                            <p>Posibles salidas:</p>
                             <ul>
                                 {% for item in scraper.output %}
-                                <li><i class="fas fa-file-alt"></i> {{ item }}</li>
+                                    <li>
+                                        <img src="{% static item.image %}" alt="{{ item.type }}" style="width: 20px; height: 20px; margin-right: 5px;">
+                                        {{ item.type }}
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -97,6 +104,7 @@
 
     <div id="contact" class="footer">
         <p>© 2024 Leandro Javier Russo. For inquiries, please <a href="mailto:email@example.com" style="color: #ffc107;">contact me</a>.</p>
+        <p>Icon made by Freepik from www.flaticon.com </a></p>        
     </div>
 
       <!-- Toast Container -->

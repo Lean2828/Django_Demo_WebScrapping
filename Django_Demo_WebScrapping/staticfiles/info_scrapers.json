@@ -2,31 +2,46 @@
     {
         "id": 1,
         "title": "Data from Table",
-        "description": "Extract data from web tables and export it to Excel or a database.",
+        "description": "This scraper extracts structured data from HTML tables on websites and converts it into a useful format for analysis or reporting. Ideal for obtaining large volumes of data presented in tables.",
         "image": "img/background_DataFromTable.png",
         "url": "run_table_scraper",
-        "type": "Web Scraping for extracting tabular data.",
-        "technology": "Selenium, BeautifulSoup",
-        "output": ["CSV", "JSON", "Database"]
+        "type_title": "Web Table Extraction",
+        "type": "This scraper targets structured data within HTML tables on websites. It carefully navigates the page, identifies the relevant table(s), and extracts the rows and columns needed. Ideal for retrieving data presented in tabular formats, such as product listings, financial reports, or structured content that is easy to parse.",
+        "technology": ["Selenium", "Pandas"],
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
     },
     {
         "id": 2,
         "title": "Fill Form",
-        "description": "Automate form filling and submission on websites.",
+        "description": "This scraper automates the process of filling out web forms, making it useful for repetitive tasks such as mass registrations or form testing. It can simulate human interactions with online forms.",
         "image": "img/background_FillForm.png",
         "url": "run_fill_form",
-        "type": "Automated form submission.",
-        "technology": "Selenium, Requests",
-        "output": ["CSV", "JSON", "Database"]
+        "type_title": "Automated Form Submission",
+        "type": "This scraper is designed to automate the process of filling out web forms and submitting them. It mimics user interactions by inputting data into various form fields, selecting options, and clicking buttons. This method is useful for scenarios like automated testing, bulk form submissions, or user registration processes.",
+        "technology": ["Selenium"],
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
     },
     {
         "id": 3,
-        "title": "Lookup Google Reviews ",
-        "description": "Automate the retrieval of Google reviews to identify strengths and weaknesses",
+        "title": "Lookup Google Reviews",
+        "description": "This scraper searches and analyzes Google reviews, extracting strengths and weaknesses of products or services. It's ideal for analyzing customer satisfaction and reputation.",
         "image": "img/background_googleReviews.png",
         "url": "run_fill_form",
-        "type": "Automated form submission.",
-        "technology": "Selenium, Requests",
-        "output": ["CSV", "JSON", "Database"]
-    }    
+        "type_title": "Sentiment Analysis on Reviews",        
+        "type": "This scraper focuses on collecting and analyzing user-generated content, specifically Google reviews. It extracts reviews, processes the text to identify sentiments (positive, negative, neutral), and highlights strengths and weaknesses mentioned by users. This approach is valuable for businesses looking to understand customer feedback or monitor brand reputation.",
+        "technology": ["Selenium", "Natural Language Toolkit", "TextBlob"],
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
+    }
 ]

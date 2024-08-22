@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "title": "Data from Table",
+        "description": "Extract data from web tables and export it to Excel or a database.",
+        "image": "img/background_DataFromTable.png",
+        "url": "run_table_scraper",
+        "type": "Web Scraping for extracting tabular data.",
+        "technology": "Selenium, BeautifulSoup",
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Fill Form",
+        "description": "Automate form filling and submission on websites.",
+        "image": "img/background_FillForm.png",
+        "url": "run_fill_form",
+        "type": "Automated form submission.",
+        "technology": "Selenium, Requests",
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Lookup Google Reviews ",
+        "description": "Automate the retrieval of Google reviews to identify strengths and weaknesses",
+        "image": "img/background_googleReviews.png",
+        "url": "run_fill_form",
+        "type": "Automated form submission.",
+        "technology": "Selenium, Requests",
+        "output": [
+            {"type": "CSV", "image": "img/csv_icon.png"},
+            {"type": "JSON", "image": "img/json_icon.png"},
+            {"type": "Database", "image": "img/database_icon.png"}
+        ]
+    }    
+]
