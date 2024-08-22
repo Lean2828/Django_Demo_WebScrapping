@@ -34,49 +34,81 @@
         </div>
 
         <div id="scrapers" class="row">
+            {% for scraper in scrapers %}
             <div class="col-md-6 mb-4">
                 <div class="scraper-card">
-                    <img src="{% static 'img/background_DataFromTable.png' %}" class="img-fluid" alt="Data from Table">
+                    <img src="{% static scraper.image %}" class="img-fluid" alt="{{ scraper.title }}">
                     <div class="card-body">
-                        <h5 class="card-title">Scraper 1: Data from Table</h5>
-                        <p class="card-text">Extract data from web tables and export it to Excel or a database.</p>
+                        <h5 class="card-title">{{ scraper.title }}</h5>
+                        <p class="card-text">{{ scraper.description }}</p>
                         <div class="d-flex justify-content-between">
-                            <button onclick="runScraper('{% url 'run_table_scraper' %}')" class="btn btn-outline-primary">Run Scraper</button>
-                            <button onclick="showDetails('Data from Table')" class="btn btn-outline-secondary">Details</button>
+                            <button onclick="runScraper('{% url scraper.url %}')" class="btn btn-outline-primary">Run Scraper</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#detailsModal{{ scraper.id }}">Details</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-4">
-                <div class="scraper-card">
-                    <img src="{% static 'img/background_FillForm.png' %}" class="img-fluid" alt="Fill Form">
-                    <div class="card-body">
-                        <h5 class="card-title">Scraper 2: Fill Form</h5>
-                        <p class="card-text">Automate form filling and submission on websites.</p>
-                        <div class="d-flex justify-content-between">
-                            <button onclick="runScraper('{% url 'run_fill_form' %}')" class="btn btn-outline-primary">Run Scraper</button>
-                            <button onclick="showDetails('Fill Form')" class="btn btn-outline-secondary">Details</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Generating Modals Dynamically -->
+    {% for scraper in scrapers %}
+    <div class="modal fade" id="detailsModal{{ scraper.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ scraper.id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel{{ scraper.id }}">{{ scraper.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="myTab{{ scraper.id }}" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="type-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#type{{ scraper.id }}" type="button" role="tab" aria-controls="type{{ scraper.id }}" aria-selected="true">Tipo de Scraping</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="technology-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#technology{{ scraper.id }}" type="button" role="tab" aria-controls="technology{{ scraper.id }}" aria-selected="false">Tecnología Usada</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="output-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#output{{ scraper.id }}" type="button" role="tab" aria-controls="output{{ scraper.id }}" aria-selected="false">Posibles Salidas</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent{{ scraper.id }}">
+                        <div class="tab-pane fade show active" id="type{{ scraper.id }}" role="tabpanel" aria-labelledby="type-tab{{ scraper.id }}">
+                            <p>{{ scraper.type }}</p>
+                        </div>
+                        <div class="tab-pane fade" id="technology{{ scraper.id }}" role="tabpanel" aria-labelledby="technology-tab{{ scraper.id }}">
+                            <p>{{ scraper.technology }}</p>
+                        </div>
+                        <div class="tab-pane fade" id="output{{ scraper.id }}" role="tabpanel" aria-labelledby="output-tab{{ scraper.id }}">
+                            <p>Posibles salidas:</p>
+                            <ul>
+                                {% for item in scraper.output %}
+                                <li><i class="fas fa-file-alt"></i> {{ item }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 
     <div id="contact" class="footer">
         <p>© 2024 Leandro Javier Russo. For inquiries, please <a href="mailto:email@example.com" style="color: #ffc107;">contact me</a>.</p>
     </div>
 
-    <!-- Toast Container -->
-    <div class="toast-container"></div>
+      <!-- Toast Container -->
+      <div class="toast-container"></div>
 
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-
+      <!-- Loading Overlay -->
+      <div id="loading-overlay" class="loading-overlay">
+          <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+          </div>
+      </div>
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
 </body>

@@ -1,14 +1,18 @@
 function runScraper(scraperUrl) {
     const loadingOverlay = document.getElementById('loading-overlay');
-    // Mostrar la capa de carga
-    loadingOverlay.style.display = 'flex';
+    if (loadingOverlay) {
+        // Mostrar la capa de carga
+        loadingOverlay.style.display = 'flex';
+    }
 
     fetch(scraperUrl, {
         method: 'GET'
     })
     .then(response => {
-        // Ocultar la capa de carga
-        loadingOverlay.style.display = 'none';
+        if (loadingOverlay) {
+            // Ocultar la capa de carga
+            loadingOverlay.style.display = 'none';
+        }
 
         if (response.status === 403) {
             return response.text().then(message => showToast(message, 'warning'));
@@ -19,8 +23,10 @@ function runScraper(scraperUrl) {
         }
     })
     .catch(error => {
-        // Ocultar la capa de carga
-        loadingOverlay.style.display = 'none';
+        if (loadingOverlay) {
+            // Ocultar la capa de carga
+            loadingOverlay.style.display = 'none';
+        }
         showToast('Error running scraper: ' + error, 'error');
     });
 }
