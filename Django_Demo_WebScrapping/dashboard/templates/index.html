@@ -10,34 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-light bg-light fixed-top" style="background-color: #F5F5F5 !important;">
         <div class="container">
-            <a class="navbar-brand" href="#">Web Scraping Demos</a>
+            <a class="navbar-brand text-dark" style="color: #4B4B4B;" href="#">Web Scraping Demos</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" style="color: #4B4B4B;" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#scrapers">Scrapers</a>
+                    <a class="nav-link" style="color: #4B4B4B;" href="#scrapers">Scrapers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link" style="color: #4B4B4B;" href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="presentation">
-            <h1>Leandro Javier Russo - Web Scraping Demos</h1>
-            <p>Discover efficient and robust web scraping solutions. Explore the demos below to see them in action.</p>
+    <div class="container mt-5 pt-5">
+        <div class="presentation text-center">
+            <h1 class="display-4">Leandro Javier Russo - Web Scraping Demos</h1>
+            <p class="lead">Discover efficient and robust web scraping solutions. Explore the demos below to see them in action.</p>
         </div>
 
         <div id="scrapers" class="row">
             {% for scraper in scrapers %}
             <div class="col-md-6 mb-4">
-                <div class="scraper-card">
-                    <img src="{% static scraper.image %}" class="img-fluid" alt="{{ scraper.title }}">
+                <div class="scraper-card shadow-lg">
+                    <img src="{% static scraper.image %}" class="img-fluid rounded" alt="{{ scraper.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ scraper.title }}</h5>
                         <p class="card-text">{{ scraper.description }}</p>
@@ -55,7 +55,7 @@
     <!-- Generating Modals Dynamically -->
     {% for scraper in scrapers %}
     <div class="modal fade" id="detailsModal{{ scraper.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ scraper.id }}" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailsModalLabel{{ scraper.id }}">{{ scraper.title }}</h5>
@@ -100,22 +100,23 @@
             </div>
         </div>
     </div>
+   
     {% endfor %}
 
-    <div id="contact" class="footer">
+    <div id="contact" class="footer text-center py-4">
         <p>© 2024 Leandro Javier Russo. For inquiries, please <a href="mailto:email@example.com" style="color: #ffc107;">contact me</a>.</p>
-        <p>Icon made by Freepik from www.flaticon.com </a></p>        
+        <p>Icon made by Freepik from www.flaticon.com</p>        
     </div>
 
-      <!-- Toast Container -->
-      <div class="toast-container"></div>
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
 
-      <!-- Loading Overlay -->
-      <div id="loading-overlay" class="loading-overlay">
-          <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
-          </div>
-      </div>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
