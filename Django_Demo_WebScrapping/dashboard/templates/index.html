@@ -62,44 +62,34 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <ul class="nav nav-tabs" id="myTab{{ scraper.id }}" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="type-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#type{{ scraper.id }}" type="button" role="tab" aria-controls="type{{ scraper.id }}" aria-selected="true">Tipo de Scraping</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="technology-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#technology{{ scraper.id }}" type="button" role="tab" aria-controls="technology{{ scraper.id }}" aria-selected="false">Tecnología Usada</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="output-tab{{ scraper.id }}" data-bs-toggle="tab" data-bs-target="#output{{ scraper.id }}" type="button" role="tab" aria-controls="output{{ scraper.id }}" aria-selected="false">Posibles Salidas</button>
-                        </li>
+                    <!-- Tipo de Scraping -->
+                    <h6 class="mt-2"><strong>{{ scraper.type_title }}</strong></h6>
+                    <p>{{ scraper.type }}</p>
+                    <h6 class="mt-2"><strong>Web Scrapped</strong></h6>                     
+                    <a  href={{ scraper.webScraped }} target="_blank"> {{ scraper.webScraped }}</a>                    
+
+                    <!-- Tecnología Usada -->
+                    <h6 class="mt-4"><strong>Tecnologías Usada</strong></h6>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        {% for tech in scraper.technology %}
+                        <li>{{ tech }}</li>
+                        {% endfor %}
                     </ul>
-                    <div class="tab-content" id="myTabContent{{ scraper.id }}">
-                        <div class="tab-pane fade show active" id="type{{ scraper.id }}" role="tabpanel" aria-labelledby="type-tab{{ scraper.id }}">
-                            <p style="text-align: center; font-size: 1.5em;"><strong>{{ scraper.type_title }}</strong></p>
-                            <p>{{ scraper.type }}</p>
-                        </div>
-                        <div class="tab-pane fade" id="technology{{ scraper.id }}" role="tabpanel" aria-labelledby="technology-tab{{ scraper.id }}">
-                            <ul style="list-style-type: disc; padding-left: 20px;">
-                                {% for tech in scraper.technology %}
-                                <li>{{ tech }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" id="output{{ scraper.id }}" role="tabpanel" aria-labelledby="output-tab{{ scraper.id }}">
-                            <ul>
-                                {% for item in scraper.output %}
-                                    <li>
-                                        <img src="{% static item.image %}" alt="{{ item.type }}" style="width: 20px; height: 20px; margin-right: 5px;">
-                                        {{ item.type }}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+
+                    <!-- Posibles Salidas -->
+                    <h6 class="mt-4"><strong>Posibles Salidas</strong></h6>
+                    <ul>
+                        {% for item in scraper.output %}
+                            <li>
+                                <img src="{% static item.image %}" alt="{{ item.type }}" style="width: 20px; height: 20px; margin-right: 5px;">
+                                {{ item.type }}
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
    
     {% endfor %}
 

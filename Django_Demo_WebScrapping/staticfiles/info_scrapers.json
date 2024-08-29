@@ -2,6 +2,7 @@
     {
         "id": 1,
         "title": "Data from Table",
+        "webScraped": "https://www.compraspublicas.gob.ec/ProcesoContratacion/compras/NCO/FrmNCOListado.cpe",
         "description": "This scraper extracts structured data from HTML tables on websites and converts it into a useful format for analysis or reporting. Ideal for obtaining large volumes of data presented in tables.",
         "image": "img/background_DataFromTable.png",
         "url": "run_table_scraper",
@@ -17,6 +18,7 @@
     {
         "id": 2,
         "title": "Fill Form",
+        "webScraped": "https://madison-island.com/",
         "description": "This scraper automates the process of filling out web forms, making it useful for repetitive tasks such as mass registrations or form testing. It can simulate human interactions with online forms.",
         "image": "img/background_FillForm.png",
         "url": "run_fill_form",
@@ -32,6 +34,7 @@
     {
         "id": 3,
         "title": "Lookup Google Reviews",
+        "webScraped": "https://business.google.com/reviews",
         "description": "This scraper searches and analyzes Google reviews, extracting strengths and weaknesses of products or services. It's ideal for analyzing customer satisfaction and reputation.",
         "image": "img/background_googleReviews.png",
         "url": "run_fill_form",

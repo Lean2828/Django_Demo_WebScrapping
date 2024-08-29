@@ -10,12 +10,13 @@ sys.path.insert(0, os.path.abspath(os.path.join(BASE_DIR, '..')))
 
 ALLOWED_HOSTS = ['django-demo-webscrapping.onrender.com']
 # ALLOWED_HOSTS = ['127.0.0.1','localhost']
+IS_LOCAL = False
+
 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
-IS_LOCAL = False
 
 # Configuración común
 SECRET_KEY = 'django-insecure-2uq@4-h0hmu2$9d411$qs9%+(qj+0=%g+x!0yfe@+ciuatk9ue'
